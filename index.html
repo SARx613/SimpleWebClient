@@ -28,46 +28,7 @@
           <button class="chip-btn">Todos</button>
         </div>
 
-        <ul class="product-list" id="product-list">
-          <li class="product" data-id="1">
-            <span class="product__icon">
-              <svg viewBox="0 0 40 56" width="34" height="46" aria-hidden="true">
-                <defs>
-                  <linearGradient id="beer1" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#FFE08A"/>
-                    <stop offset="35%" stop-color="#FBC23B"/>
-                    <stop offset="100%" stop-color="#E89106"/>
-                  </linearGradient>
-                </defs>
-                <path class="glass-foam" d="M9 9 q-5 -1 -5 4 q-3 0 -3 4 q-3 1 -2 5 q1 3 5 3 l20 0 q5 0 6 -4 q3 -1 2 -5 q3 -2 1 -5 q-2 -3 -6 -2 q-2 -3 -6 -2 q-4 -3 -8 -1 q-3 -1 -4 3 z" fill="#FFFDF5"/>
-                <path d="M7 14 h26 l-2.5 36 a4 4 0 0 1 -4 3.6 h-13 a4 4 0 0 1 -4 -3.6 z" fill="url(#beer1)" stroke="#C9CDD3" stroke-width="1.4"/>
-                <rect x="7" y="14" width="26" height="6" rx="1" fill="#FFF6E0" opacity="0.7"/>
-                <ellipse cx="15" cy="40" rx="1.6" ry="2.4" fill="#fff" opacity="0.35"/>
-                <ellipse cx="22" cy="34" rx="1.3" ry="2" fill="#fff" opacity="0.3"/>
-              </svg>
-            </span>
-            <span class="product__name">Pinta ingreso</span>
-            <span class="checkbox" role="checkbox" aria-checked="false" tabindex="0">
-              <svg class="checkbox__tick" viewBox="0 0 24 24" width="16" height="16"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-          </li>
-
-          <li class="product" data-id="2">
-            <span class="product__icon">
-              <svg viewBox="0 0 40 56" width="34" height="46" aria-hidden="true">
-                <path class="glass-foam" d="M9 9 q-5 -1 -5 4 q-3 0 -3 4 q-3 1 -2 5 q1 3 5 3 l20 0 q5 0 6 -4 q3 -1 2 -5 q3 -2 1 -5 q-2 -3 -6 -2 q-2 -3 -6 -2 q-4 -3 -8 -1 q-3 -1 -4 3 z" fill="#FFFDF5"/>
-                <path d="M7 14 h26 l-2.5 36 a4 4 0 0 1 -4 3.6 h-13 a4 4 0 0 1 -4 -3.6 z" fill="url(#beer1)" stroke="#C9CDD3" stroke-width="1.4"/>
-                <rect x="7" y="14" width="26" height="6" rx="1" fill="#FFF6E0" opacity="0.7"/>
-                <ellipse cx="15" cy="40" rx="1.6" ry="2.4" fill="#fff" opacity="0.35"/>
-                <ellipse cx="22" cy="34" rx="1.3" ry="2" fill="#fff" opacity="0.3"/>
-              </svg>
-            </span>
-            <span class="product__name">Pinta ingreso</span>
-            <span class="checkbox" role="checkbox" aria-checked="false" tabindex="0">
-              <svg class="checkbox__tick" viewBox="0 0 24 24" width="16" height="16"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-          </li>
-        </ul>
+        <ul class="product-list" id="product-list"></ul>
       </div>
 
       <div class="action-bar">
@@ -129,12 +90,9 @@
           <hr class="ticket-card__rule" />
           <div class="ticket-card__row">
             <span class="ticket-card__label">Estas retirando</span>
-            <span class="ticket-card__total"><span class="t-label">Total:</span>1</span>
+            <span class="ticket-card__total"><span class="t-label">Total:</span><span id="retiro-total">1</span></span>
           </div>
-          <div class="ticket-card__item">
-            <span class="ticket-card__qty">1</span>
-            <span>Pinta ingreso</span>
-          </div>
+          <div class="ticket-card__items" id="retiro-items"></div>
         </div>
       </div>
 

@@ -7,7 +7,7 @@
   --green:#33c75e;
   --green-strong:#2ecf71;
   --green-text:#5c7d65;
-  --orange:#fdba74;
+  --orange:#e07d70;
   --red:#f15a4f;
   --navy:#04252b;
   --ink2:#0a1112;
@@ -94,7 +94,9 @@ body{
   gap:14px;
   cursor:pointer;
   transition:border-color .25s ease, box-shadow .25s ease, transform .25s ease;
+  animation:itemIn .45s cubic-bezier(.22,1,.36,1) both;
 }
+@keyframes itemIn{0%{opacity:0;transform:translateY(14px) scale(.97);}100%{opacity:1;transform:translateY(0) scale(1);}}
 .product:active{transform:scale(.99);}
 .product.is-selected{
   border-color:#1b1d1f;
