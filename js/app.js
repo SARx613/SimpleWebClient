@@ -11,7 +11,7 @@
   tick();
   setInterval(tick, 1000);
 
-  /* ---------- product icons (SVG) ---------- */
+  /* ---------- product icon fallbacks (SVG) ---------- */
   var ICONS = {
     beer:
       '<svg viewBox="0 0 40 56" width="32" height="44" aria-hidden="true">' +
@@ -31,12 +31,11 @@
       '<circle cx="41" cy="28" r="4.8" fill="#9bd23f" stroke="#74a82c" stroke-width="1"/></svg>'
   };
 
-  /* ---------- product datasets (Todos toggles between them) ----------
-     A product can use an SVG icon (icon: "...") or a real image (img: "URL"). */
+  /* ---------- product datasets ---------- */
   var SETS = [
     [
-      { name: "Pinta ingreso", icon: "beer" },
-      { name: "Pinta ingreso", icon: "beer" }
+      { name: "Pinta ingreso", img: "https://assets.skipit.com.ar/60/cropped_1768234365786.webp" },
+      { name: "Pinta ingreso", img: "https://assets.skipit.com.ar/60/cropped_1768234365786.webp" }
     ],
     [
       { name: "Trago ingreso", img: "images/trago-gintonic.jpeg" }
@@ -58,26 +57,56 @@
     var li = document.createElement("li");
     li.className = "product";
     li.style.animationDelay = (i * 0.07) + "s";
-    var iconHtml = item.img
-      ? '<img class="product__img" src="' + item.img + '" alt="" />'
-      : ICONS[item.icon];
+
+    var mediaHtml;
+    if (item.img) {
+      mediaHtml =
+        '<div class="product__img-wrap">' +
+          '<img class="product__img" src="' + item.img + '" alt="' + item.name + '" loading="lazy" />' +
+        '</div>';
+    } else {
+      mediaHtml =
+        '<div class="product__icon-wrap">' + ICONS[item.icon] + '</div>';
+    }
+
     li.innerHTML =
-      '<span class="product__icon">' + iconHtml + "</span>" +
-      '<span class="product__name">' + item.name + "</span>" +
-      '<span class="checkbox" role="checkbox" aria-checked="false" tabindex="0">' +
-        '<svg class="checkbox__tick" viewBox="0 0 24 24" width="16" height="16"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
-      "</span>";
+      mediaHtml +
+      '<div class="product__info">' +
+        '<p class="product__name" translate="no">' + item.name + '</p>' +
+      '</div>' +
+      '<div class="product__radio">' +
+        '<input type="checkbox" tabindex="-1" />' +
+        '<span></span>' +
+      '</div>';
+
+    var radioInput = li.querySelector('.product__radio input');
 
     function toggle() {
-      var box = li.querySelector(".checkbox");
       var sel = li.classList.toggle("is-selected");
-      box.setAttribute("aria-checked", sel ? "true" : "false");
+      radioInput.checked = sel;
       refresh();
     }
     li.addEventListener("click", toggle);
-    li.querySelector(".checkbox").addEventListener("keydown", function (e) {
+    li.addEventListener("keydown", function (e) {
       if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); }
     });
+    li.setAttribute("tabindex", "0");
+    li.setAttribute("role", "checkbox");
+    li.setAttribute("aria-checked", "false");
+
+    var origToggle = toggle;
+    toggle = function () {
+      var sel = li.classList.toggle("is-selected");
+      radioInput.checked = sel;
+      li.setAttribute("aria-checked", sel ? "true" : "false");
+      refresh();
+    };
+    li.removeEventListener("click", origToggle);
+    li.addEventListener("click", toggle);
+    li.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); }
+    });
+
     return li;
   }
 
@@ -110,7 +139,7 @@
     });
   }
 
-  /* ---------- confirm -> build Retiro ticket from selection ---------- */
+  /* ---------- confirm -> build Retiro ticket ---------- */
   var retiroItems = document.getElementById("retiro-items");
   var retiroTotal = document.getElementById("retiro-total");
 
@@ -140,7 +169,6 @@
     knob.style.transition = anim ? "left .25s ease" : "none";
     fill.style.transition = anim ? "width .25s ease" : "none";
     knob.style.left = (6 + x) + "px";
-    // No dark fill at rest; it appears and trails the knob as soon as you slide.
     fill.style.width = (x <= 0 ? 0 : 6 + x + knob.offsetWidth / 2) + "px";
   }
 
