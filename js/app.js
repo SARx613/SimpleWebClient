@@ -61,18 +61,28 @@
   /* ---------- swipe to confirm ---------- */
   var swipe = document.getElementById("swipe");
   var knob = document.getElementById("swipe-knob");
+  var fill = document.getElementById("swipe-fill");
   var dragging = false, startX = 0, currentX = 0, maxX = 0, done = false;
+
+  function paint(x, anim) {
+    var t = anim ? "left .25s ease" : "none";
+    var tf = anim ? "width .25s ease" : "none";
+    knob.style.transition = t;
+    fill.style.transition = tf;
+    knob.style.left = (6 + x) + "px";
+    fill.style.width = (6 + x + knob.offsetWidth / 2) + "px";
+  }
 
   function resetSwipe() {
     done = false;
-    knob.style.transition = "left .25s ease";
-    knob.style.left = "6px";
+    currentX = 0;
+    paint(0, true);
   }
 
   function knobX(px) {
     maxX = swipe.clientWidth - knob.offsetWidth - 12;
     var x = Math.max(0, Math.min(px, maxX));
-    knob.style.left = (6 + x) + "px";
+    paint(x, false);
     return x;
   }
 
@@ -93,14 +103,12 @@
     dragging = false;
     if (currentX >= maxX * 0.82) {
       done = true;
-      knob.style.transition = "left .18s ease";
-      knob.style.left = (6 + maxX) + "px";
       currentX = maxX;
+      paint(maxX, true);
       finish();
     } else {
-      knob.style.transition = "left .25s ease";
-      knob.style.left = "6px";
       currentX = 0;
+      paint(0, true);
     }
   }
 
