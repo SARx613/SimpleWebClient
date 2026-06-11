@@ -8,7 +8,7 @@
   function pad(n) { return n < 10 ? "0" + n : "" + n; }
   function tick() {
     var d = new Date();
-    hora.textContent = pad(d.getHours()) + ":" + pad(d.getMinutes()) + ":" + pad(d.getSeconds());
+    hora.textContent = "Hora " + pad(d.getHours()) + ":" + pad(d.getMinutes()) + ":" + pad(d.getSeconds());
   }
   tick();
   setInterval(tick, 1000);
