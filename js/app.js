@@ -18,33 +18,28 @@
       '<path d="M9 9 q-5 -1 -5 4 q-3 0 -3 4 q-3 1 -2 5 q1 3 5 3 l20 0 q5 0 6 -4 q3 -1 2 -5 q3 -2 1 -5 q-2 -3 -6 -2 q-2 -3 -6 -2 q-4 -3 -8 -1 q-3 -1 -4 3 z" fill="#FFFDF5"/>' +
       '<path d="M7 14 h26 l-2.5 36 a4 4 0 0 1 -4 3.6 h-13 a4 4 0 0 1 -4 -3.6 z" fill="#FBC23B" stroke="#C9CDD3" stroke-width="1.4"/>' +
       '<rect x="7" y="14" width="26" height="6" rx="1" fill="#FFF6E0" opacity="0.7"/></svg>',
-    bottle:
-      '<svg viewBox="0 0 40 56" width="28" height="44" aria-hidden="true">' +
-      '<rect x="15.5" y="3" width="9" height="6" rx="1.5" fill="#2e6db4"/>' +
-      '<rect x="16.5" y="8.5" width="7" height="5" fill="#e3eaee"/>' +
-      '<path d="M14.5 13.5 q-3.2 2 -3.2 7 v25 q0 4 4 4 h9.4 q4 0 4 -4 v-25 q0 -5 -3.2 -7 z" fill="#eef3f6" stroke="#c5ccd2" stroke-width="1.3"/>' +
-      '<rect x="10.8" y="30" width="18.4" height="10" rx="1" fill="#3b82c4"/>' +
-      '<rect x="15" y="18" width="2.4" height="20" rx="1.2" fill="#ffffff" opacity="0.65"/></svg>',
-    cocktail:
-      '<svg viewBox="0 0 44 56" width="30" height="44" aria-hidden="true">' +
-      '<path d="M8 15 a14 13 0 0 0 28 0 z" fill="#f7d98a" stroke="#c7ced3" stroke-width="1.3"/>' +
-      '<ellipse cx="22" cy="15" rx="14" ry="3.2" fill="#fbe7ad" stroke="#c7ced3" stroke-width="1"/>' +
-      '<rect x="21" y="28" width="2" height="17" fill="#c7ced3"/>' +
-      '<ellipse cx="22" cy="47" rx="9" ry="2.4" fill="#c7ced3"/>' +
-      '<path d="M27 9 l5 -5" stroke="#7cc47a" stroke-width="2.2" stroke-linecap="round"/></svg>'
+    trago:
+      '<svg viewBox="0 0 64 84" width="36" height="48" aria-hidden="true">' +
+      '<ellipse cx="32" cy="78" rx="12" ry="2.6" fill="#dfe6ea"/>' +
+      '<rect x="30.7" y="52" width="2.6" height="24" fill="#dfe6ea"/>' +
+      '<path d="M13 30 a19 19 0 0 0 38 0 a19 8 0 0 0 -38 0 Z" fill="#eef6fa" stroke="#c5ccd2" stroke-width="1.3"/>' +
+      '<ellipse cx="32" cy="30" rx="19" ry="6.5" fill="#f4fafd" stroke="#c5ccd2" stroke-width="1.3"/>' +
+      '<rect x="24" y="34" width="9" height="9" rx="2" fill="#dff0f7" transform="rotate(12 28 38)"/>' +
+      '<rect x="33" y="40" width="8" height="8" rx="2" fill="#cfe7f1" transform="rotate(-15 37 44)"/>' +
+      '<rect x="27" y="44" width="7" height="7" rx="2" fill="#e7f4f9"/>' +
+      '<circle cx="24" cy="27" r="5.5" fill="#ffe23d" stroke="#e9c11f" stroke-width="1"/>' +
+      '<circle cx="41" cy="28" r="4.8" fill="#9bd23f" stroke="#74a82c" stroke-width="1"/></svg>'
   };
 
-  /* ---------- product datasets (Todos toggles between them) ---------- */
+  /* ---------- product datasets (Todos toggles between them) ----------
+     A product can use an SVG icon (icon: "...") or a real image (img: "URL"). */
   var SETS = [
     [
       { name: "Pinta ingreso", icon: "beer" },
       { name: "Pinta ingreso", icon: "beer" }
     ],
     [
-      { name: "Bebida sin alcohol ingreso", icon: "bottle" },
-      { name: "Bebida sin alcohol ingreso", icon: "bottle" },
-      { name: "Bebida sin alcohol ingreso", icon: "bottle" },
-      { name: "Trago ingreso", icon: "cocktail" }
+      { name: "Trago ingreso", icon: "trago" }
     ]
   ];
   var setIndex = 0;
@@ -63,8 +58,11 @@
     var li = document.createElement("li");
     li.className = "product";
     li.style.animationDelay = (i * 0.07) + "s";
+    var iconHtml = item.img
+      ? '<img class="product__img" src="' + item.img + '" alt="" />'
+      : ICONS[item.icon];
     li.innerHTML =
-      '<span class="product__icon">' + ICONS[item.icon] + "</span>" +
+      '<span class="product__icon">' + iconHtml + "</span>" +
       '<span class="product__name">' + item.name + "</span>" +
       '<span class="checkbox" role="checkbox" aria-checked="false" tabindex="0">' +
         '<svg class="checkbox__tick" viewBox="0 0 24 24" width="16" height="16"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
