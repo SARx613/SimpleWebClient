@@ -103,7 +103,8 @@
         <div class="ticket-card">
           <div class="ticket-card__head">
             <span class="avatar">
-              <svg viewBox="0 0 100 100" width="100%" height="100%" aria-hidden="true">
+              <img class="avatar__img" src="https://assets.skipit.com.ar/60/logo_60_1742138900273" width="50" height="50" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
+              <svg class="avatar__fallback" viewBox="0 0 100 100" width="100%" height="100%" style="display:none" aria-hidden="true">
                 <circle cx="50" cy="50" r="50" fill="#fdfdfa"/>
                 <defs>
                   <path id="arcTop" d="M14 50 a36 36 0 0 1 72 0"/>
@@ -115,8 +116,6 @@
                 </g>
                 <path d="M40 65 A17 17 0 1 0 60 65" fill="none" stroke="#a4392d" stroke-width="7.5" stroke-linecap="round"/>
                 <circle cx="50" cy="43" r="2" fill="#a4392d"/>
-                <circle cx="41" cy="39" r="1" fill="#a4392d"/>
-                <circle cx="59" cy="39" r="1" fill="#a4392d"/>
                 <circle cx="40" cy="66" r="2.3" fill="#a4392d"/>
                 <circle cx="60" cy="66" r="2.3" fill="#a4392d"/>
               </svg>
@@ -125,12 +124,12 @@
               <p class="ticket-card__name">Rabieta Palermo</p>
               <p class="ticket-card__meta">Ingreso - .</p>
             </div>
-            <span class="ticket-card__hour">Hora <b id="hora-time">00:00:00</b></span>
+            <span class="ticket-card__hour" id="hora-time">Hora 00:00:00</span>
           </div>
           <hr class="ticket-card__rule" />
           <div class="ticket-card__row">
             <span class="ticket-card__label">Estas retirando</span>
-            <span class="ticket-card__total">Total:1</span>
+            <span class="ticket-card__total"><span class="t-label">Total:</span>1</span>
           </div>
           <div class="ticket-card__item">
             <span class="ticket-card__qty">1</span>
@@ -144,7 +143,7 @@
           <div class="swipe__fill" id="swipe-fill"></div>
           <span class="swipe__label">Retirado</span>
           <div class="swipe__knob" id="swipe-knob">
-            <svg viewBox="0 0 24 24" width="22" height="22"><path d="M9 6l6 6-6 6" fill="none" stroke="#13242b" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="32" height="32" viewBox="0 0 25 25" fill="#04252b" xmlns="http://www.w3.org/2000/svg"><path d="M7.83114 19.7627C8.25416 20.2524 8.9744 20.3332 9.49325 19.9697L9.59481 19.8916L17.0401 13.4609C17.3151 13.2235 17.4727 12.8779 17.4727 12.5146C17.4727 12.1515 17.3149 11.8067 17.0401 11.5693L9.59481 5.13867L9.49325 5.05957C8.97439 4.69625 8.25409 4.77784 7.83114 5.26758C7.38019 5.78995 7.43793 6.57906 7.96005 7.03027L14.3106 12.5156L7.96005 17.999L7.86825 18.0879C7.43298 18.5483 7.40809 19.2728 7.83114 19.7627Z" fill="#04252b"/></svg>
           </div>
         </div>
         <p class="swipe__hint">Deslizá para confirmar que retiraste tus productos</p>
