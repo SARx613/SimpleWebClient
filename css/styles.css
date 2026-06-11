@@ -7,7 +7,7 @@
   --green:#33c75e;
   --green-strong:#2ecf71;
   --green-text:#5c7d65;
-  --orange:#e07d70;
+  --orange:#f87171;
   --red:#f15a4f;
   --navy:#04252b;
   --ink2:#0a1112;
@@ -107,6 +107,7 @@ body{
   display:flex;align-items:center;justify-content:center;
   flex:0 0 auto;
 }
+.product__img{width:42px;height:44px;object-fit:contain;display:block;}
 .product.is-selected .product__icon{animation:pickPop .45s cubic-bezier(.34,1.56,.64,1);}
 @keyframes pickPop{
   0%{transform:scale(1) rotate(0);}
