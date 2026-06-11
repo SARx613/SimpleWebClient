@@ -39,7 +39,7 @@
       { name: "Pinta ingreso", icon: "beer" }
     ],
     [
-      { name: "Trago ingreso", icon: "trago" }
+      { name: "Trago ingreso", img: "images/trago-gintonic.jpeg" }
     ]
   ];
   var setIndex = 0;
