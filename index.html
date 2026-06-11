@@ -102,12 +102,30 @@
 
         <div class="ticket-card">
           <div class="ticket-card__head">
-            <span class="avatar"></span>
+            <span class="avatar">
+              <svg viewBox="0 0 100 100" width="100%" height="100%" aria-hidden="true">
+                <circle cx="50" cy="50" r="50" fill="#fdfdfa"/>
+                <defs>
+                  <path id="arcTop" d="M14 50 a36 36 0 0 1 72 0"/>
+                  <path id="arcBot" d="M19 50 a31 31 0 0 0 62 0"/>
+                </defs>
+                <g fill="#9c352b" font-family="Poppins, sans-serif" font-weight="700">
+                  <text font-size="9.2" letter-spacing="1.1"><textPath href="#arcTop" startOffset="50%" text-anchor="middle">ARTESANAL · MALCRIADA</textPath></text>
+                  <text font-size="9.2" letter-spacing="2"><textPath href="#arcBot" startOffset="50%" text-anchor="middle">CERVEZA</textPath></text>
+                </g>
+                <path d="M40 65 A17 17 0 1 0 60 65" fill="none" stroke="#a4392d" stroke-width="7.5" stroke-linecap="round"/>
+                <circle cx="50" cy="43" r="2" fill="#a4392d"/>
+                <circle cx="41" cy="39" r="1" fill="#a4392d"/>
+                <circle cx="59" cy="39" r="1" fill="#a4392d"/>
+                <circle cx="40" cy="66" r="2.3" fill="#a4392d"/>
+                <circle cx="60" cy="66" r="2.3" fill="#a4392d"/>
+              </svg>
+            </span>
             <div class="ticket-card__who">
               <p class="ticket-card__name">Rabieta Palermo</p>
               <p class="ticket-card__meta">Ingreso - .</p>
             </div>
-            <span class="ticket-card__hour">Hora <b>22:32:02</b></span>
+            <span class="ticket-card__hour">Hora <b id="hora-time">00:00:00</b></span>
           </div>
           <hr class="ticket-card__rule" />
           <div class="ticket-card__row">
@@ -137,17 +155,17 @@
     <section id="screen-loading" class="screen screen--loading">
       <div class="loader-card">
         <div class="brand">
-          <svg class="brand__frog" viewBox="0 0 70 52" width="50" height="37" aria-hidden="true">
-            <g fill="#20bf4a">
-              <path d="M5 34 q-4 -12 9 -15 q-4 6 0 12 q4 7 14 5 q-12 9 -23 -2z"/>
-              <path d="M6 38 q-3 4 -1 8 q3 -3 7 -2 q-4 -3 -6 -6z"/>
-              <ellipse cx="34" cy="28" rx="22" ry="13" transform="rotate(-22 34 28)"/>
-              <path d="M48 28 q9 7 20 8 q-9 -5 -11 -13 q-6 -1 -9 5z"/>
-              <circle cx="53" cy="16" r="10"/>
-              <circle cx="50" cy="7.5" r="5"/>
+          <svg class="brand__frog" viewBox="0 0 80 56" width="54" height="38" aria-hidden="true">
+            <g fill="#4bbf64">
+              <path d="M11 28 q-7 5 -4 13 q3 6 11 5 q-8 -3 -6 -10 q2 -6 -1 -8z"/>
+              <ellipse cx="37" cy="32" rx="22" ry="14" transform="rotate(16 37 32)"/>
+              <circle cx="27" cy="17" r="10"/>
+              <path d="M19 22 q-9 0 -12 9 q5 -4 12 -2 q5 1 4 -5z"/>
+              <path d="M50 35 q14 1 24 9 q-4 -10 -15 -14 q-7 -1 -9 5z"/>
+              <path d="M24 44 q-4 8 4 11 q6 1 9 -4 q-8 1 -9 -7z"/>
             </g>
-            <circle cx="51" cy="6.5" r="2.1" fill="#0b1a11"/>
-            <circle cx="49.3" cy="5.2" r=".8" fill="#fff"/>
+            <circle cx="25" cy="13" r="2.3" fill="#0b1a11"/>
+            <circle cx="23.4" cy="11.6" r=".9" fill="#fff"/>
           </svg>
           <span class="brand__name">skipit</span>
         </div>

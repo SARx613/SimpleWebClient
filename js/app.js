@@ -3,6 +3,16 @@
 
   var selected = new Set();
 
+  /* ---------- live clock (real current time, HH:MM:SS) ---------- */
+  var hora = document.getElementById("hora-time");
+  function pad(n) { return n < 10 ? "0" + n : "" + n; }
+  function tick() {
+    var d = new Date();
+    hora.textContent = pad(d.getHours()) + ":" + pad(d.getMinutes()) + ":" + pad(d.getSeconds());
+  }
+  tick();
+  setInterval(tick, 1000);
+
   /* ---------- screen navigation ---------- */
   function show(id) {
     var screens = document.querySelectorAll(".screen");
