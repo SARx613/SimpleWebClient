@@ -70,7 +70,8 @@
     knob.style.transition = t;
     fill.style.transition = tf;
     knob.style.left = (6 + x) + "px";
-    fill.style.width = (6 + x + knob.offsetWidth / 2) + "px";
+    // No dark fill at rest; it appears and trails the knob as soon as you slide.
+    fill.style.width = (x <= 0 ? 0 : 6 + x + knob.offsetWidth / 2) + "px";
   }
 
   function resetSwipe() {
