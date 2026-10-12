@@ -66,35 +66,39 @@ body{
   justify-content:space-between;
   gap:10px;
 }
-.info-card__text{max-width:150px;}
-.info-card__title{margin:0;font-weight:600;font-size:16px;line-height:1.2;color:#191b1d;}
-.info-card__sub{margin:6px 0 0;font-size:12px;font-weight:400;color:var(--muted);}
+.info-card__text{max-width:160px;}
+.info-card__title{margin:0;font-weight:600;font-size:14px;line-height:1.25;color:var(--ink2);letter-spacing:-.02rem;}
+.info-card__sub{margin:4px 0 0;font-size:12px;font-weight:500;color:var(--ink2);letter-spacing:-.02rem;}
 .chip-btn{
   border:1px solid var(--chip-border);
   background:#fff;
   border-radius:13px;
-  padding:18px 30px;
+  padding:12px 22px;
   font-family:inherit;
-  font-size:15px;
+  font-size:14px;
   font-weight:500;
-  color:#191b1d;
+  color:var(--ink2);
   cursor:pointer;
   white-space:nowrap;
+  letter-spacing:-.02rem;
+  transition:background .18s ease;
 }
+.chip-btn:active{background:#f4f4f4;}
 
 /* ---------- product list ---------- */
-.product-list{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;gap:14px;}
+.product-list{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;gap:10px;}
 .product{
   background:var(--card);
   border:1px solid #eaeaea;
   border-radius:15px;
-  padding:14px 16px;
+  padding:10px 16px 10px 10px;
   display:flex;
   align-items:center;
-  gap:14px;
+  gap:12px;
   cursor:pointer;
   transition:border-color .25s ease, box-shadow .25s ease, transform .25s ease;
   animation:itemIn .45s cubic-bezier(.22,1,.36,1) both;
+  overflow:hidden;
 }
 @keyframes itemIn{0%{opacity:0;transform:translateY(14px) scale(.97);}100%{opacity:1;transform:translateY(0) scale(1);}}
 .product:active{transform:scale(.99);}
@@ -102,32 +106,63 @@ body{
   border-color:#1b1d1f;
   border-width:1.5px;
 }
-.product__icon{
-  width:40px;height:44px;
-  display:flex;align-items:center;justify-content:center;
-  flex:0 0 auto;
+
+/* product image */
+.product__img-wrap{
+  width:64px;height:64px;flex:0 0 64px;
+  border-radius:10px;
+  overflow:hidden;
+  background:#f0f0f0;
 }
-.product__img{width:42px;height:44px;object-fit:contain;display:block;}
-.product.is-selected .product__icon{animation:pickPop .45s cubic-bezier(.34,1.56,.64,1);}
+.product__img{width:100%;height:100%;object-fit:cover;display:block;}
+
+/* product icon fallback (SVG) */
+.product__icon-wrap{
+  width:64px;height:64px;flex:0 0 64px;
+  border-radius:10px;
+  background:#f6f6f6;
+  display:flex;align-items:center;justify-content:center;
+}
+.product.is-selected .product__img-wrap,
+.product.is-selected .product__icon-wrap{animation:pickPop .45s cubic-bezier(.34,1.56,.64,1);}
 @keyframes pickPop{
   0%{transform:scale(1) rotate(0);}
   35%{transform:scale(1.22) rotate(-8deg);}
   70%{transform:scale(.95) rotate(4deg);}
   100%{transform:scale(1) rotate(0);}
 }
-.product__name{flex:1;font-weight:600;font-size:16px;color:#191b1d;}
 
-.checkbox{
-  width:23px;height:23px;flex:0 0 auto;
-  border:2px solid #d2d6db;
-  border-radius:7px;
-  display:flex;align-items:center;justify-content:center;
-  background:#fff;
-  transition:background .2s ease, border-color .2s ease;
+/* product info */
+.product__info{flex:1;min-width:0;}
+.product__name{
+  margin:0;
+  font-weight:800;
+  font-size:16px;
+  color:var(--ink2);
+  letter-spacing:-.02rem;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
-.checkbox__tick{opacity:0;transform:scale(.3);transition:opacity .2s ease, transform .25s cubic-bezier(.34,1.56,.64,1);}
-.product.is-selected .checkbox{background:#16262c;border-color:#16262c;}
-.product.is-selected .checkbox__tick{opacity:1;transform:scale(1);}
+
+/* product radio */
+.product__radio{flex:0 0 auto;}
+.product__radio input[type="checkbox"]{
+  position:absolute;opacity:0;width:0;height:0;pointer-events:none;
+}
+.product__radio span{
+  display:block;
+  width:24px;height:24px;
+  border-radius:50%;
+  border:2px solid #d2d6db;
+  background:#fff;
+  transition:background .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.product.is-selected .product__radio span{
+  background:var(--ink2);
+  border-color:var(--ink2);
+  box-shadow:0 0 0 2px rgba(10,17,18,.12);
+}
 
 /* ---------- action bar ---------- */
 .action-bar{
@@ -136,17 +171,23 @@ body{
   background:#f0f0f0;
   border-top:1px solid #e2e2e2;
 }
-.action-bar__count{font-weight:600;font-size:15px;color:#26292c;min-width:78px;}
+.action-bar__count{
+  font-weight:700;font-size:18px;
+  color:var(--ink2);
+  min-width:100px;
+  letter-spacing:-.02rem;
+}
 .confirm-btn{
   flex:1;
   border:none;
   border-radius:24px;
   padding:14px 18px;
   font-family:inherit;
-  font-size:16px;
-  font-weight:600;
-  color:#9aa0a6;
-  background:#d9dadc;
+  font-size:18px;
+  font-weight:500;
+  letter-spacing:-.02rem;
+  color:rgba(10,17,18,.45);
+  background:#dde0e5;
   cursor:not-allowed;
   transition:background .3s ease, color .3s ease, transform .15s ease;
 }
@@ -159,16 +200,35 @@ body{
 
 /* ---------- bottom nav ---------- */
 .bottom-nav{
-  display:flex;justify-content:space-around;align-items:center;
-  padding:11px 8px calc(11px + env(safe-area-inset-bottom));
+  display:flex;align-items:stretch;
+  padding-bottom:env(safe-area-inset-bottom);
   background:#fff;
   border-top:1px solid #eee;
+  min-height:60px;
+}
+.nav-inner{
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  width:100%;
+  padding:8px 0;
 }
 .nav-item{
-  background:none;border:none;padding:6px 14px;cursor:pointer;
-  color:#1b1d1f;display:flex;align-items:center;justify-content:center;
+  background:none;border:none;
+  padding:4px 12px;
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  flex:1;
 }
-.nav-item--active{color:var(--green);}
+.nav-icon-wrap{
+  color:#1b1d1f;
+  display:flex;align-items:center;justify-content:center;
+  padding:4px;
+  border-radius:10px;
+  transition:background .15s ease;
+}
+.nav-item:active .nav-icon-wrap{background:#f0f0f0;}
+.nav-icon-wrap--active{color:var(--green);}
 
 /* ================= RETIRO ================= */
 .screen--retiro{background:var(--orange);letter-spacing:-.02rem;}
